@@ -29,7 +29,8 @@ export default Ember.Route.extend({
 				console.log(error);
 			});
 			var curIncome = parseInt(client.get('totalIncome'));
-			var noOfProjects = parseInt(1);
+			var noOfProjects = parseInt(client.get('noOfProjects'));
+			noOfProjects += 1;
 			curIncome += parseInt(projectCost);
 			client.set('noOfProjects',noOfProjects);
 			client.set('totalIncome',curIncome);
