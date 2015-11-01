@@ -29,8 +29,9 @@ export default Ember.Route.extend({
 				console.log(error);
 			});
 			var curIncome = parseInt(client.get('totalIncome'));
+			var noOfProjects = parseInt(1);
 			curIncome += parseInt(projectCost);
-			client.set('noOfProjects',1);
+			client.set('noOfProjects',noOfProjects);
 			client.set('totalIncome',curIncome);
 			client.save().catch(function(error){
 				console.log("Error at Saving Client");
