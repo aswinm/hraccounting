@@ -1,0 +1,67 @@
+<h3 class="heading">{{ content.name}}</h3>
+<div class="button-div">
+	<button {{action 'editProject'}} class="btn btn-success">Edit Project</button>&nbsp;&nbsp;
+	<button {{action "deleteProject" content}} class="btn btn-danger">Delete Project</button><br>
+</div>
+<div class="data-div">
+{{#if edit}}
+<table class="content-list">
+	<tr>
+		<td><strong>Project Name</strong></td>
+		<td>{{input type="text" id="project-name"  class="form-control client-form-input" value=content.name}}</td>
+	</tr>
+	<tr>
+		<td><strong>Project Cost</strong></td>
+		<td>{{input type="text" id="project-cost" class="form-control client-form-input" value=content.totalCost}}</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><button {{action "updateProject" content }} class="btn btn-primary client-form-input">Edit</button></td>
+	</tr>
+</table>
+{{else}}
+<table class="content-list">
+	<tr>
+		<td><strong>Name</strong></td> 
+		<td>{{content.name}}</td>
+	</tr>
+	<tr>
+		<td><strong>Client</strong></td>  
+		<td>{{#link-to 'clients.client' content.client.id }}{{ content.client.companyName}}{{/link-to}}</td>
+	</tr>
+	<tr>
+		<td><strong>Total Cost</strong></td> 
+		<td>{{ content.totalCost}}</td>
+	</tr>
+	<tr>
+		<td><strong>Total Time Spent</strong></td> 
+		<td>{{ content.totalDuration}}</td>
+	</tr>
+</table>
+{{/if}}
+
+</div>
+
+<h4 client="heading">List of Time Durations:</h4>
+
+<table class="table item-list">
+
+	{{#each content.timeDurations as |timeDuration|}}
+		<tr>
+		<td>{{timeDuration.fromTime }}</td>
+		<td>{{timeDuration.toTime}}</td>
+		<td>{{timeDuration.duration}}</td>
+		<td><a href="#" {{ action 'deleteTimeDuration' timeDuration content}}>Delete</a></td>
+		</tr>
+	{{/each}}
+	<tr>
+		<td><a href="#" {{ action 'addTimeDuration'}}>Add Time Duration</a></td>
+	</tr>
+
+</table>
+
+{{#if addTime}}
+From Time: {{input type="datetime" valueBinding=fromTime class="form-control client-form-input" placeholder="yyyy-mm-ss HH:MM:SS"}}
+To Time: {{input type="datetime" valueBinding=toTime class="form-control client-form-input" placeholder="yyyy-mm-ss HH:MM:SS"}}
+<button class="btn btn-primary client-form-input" {{action 'createTimeDuration' content}}>Add Time Duration</button>
+{{/if}}

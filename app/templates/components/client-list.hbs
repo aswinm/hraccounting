@@ -1,0 +1,74 @@
+<h3 class="heading">{{content.companyName}}</h3>
+<div class="button-div">
+<button {{action 'editClient'}} class="btn btn-success">Edit Client</button>&nbsp;&nbsp;
+<button {{action "deleteClient" content}} class="btn btn-danger">Delete Client</button><br>
+</div>
+<div class="data-div">
+{{#if edit}}
+<table class="content-list">
+<tr>
+	<td>Name</td>
+	<td>{{input type="text" id="client-company-name"  class="form-control client-form-input" value=content.companyName}}</td>
+</tr>
+<tr>
+	<td>Phone Number</td> 
+	<td>{{input type="text" id="client-phone-number" class="form-control client-form-input" value=content.phoneNumber}}</td>
+</tr>
+<tr>
+	<td>Email</td>
+	<td>{{input type="email" id="client-email" class="form-control client-form-input" value=content.email}}</td>
+</tr>
+<tr>
+	<td>City</td> 
+	<td>{{input type="text" id="client-city" class="form-control client-form-input" value=content.companyCity}}</td>
+</tr>
+<tr>
+<td></td>
+	<td><button {{action "updateClient" content}} class="btn btn-primary client-form-input">Edit</button></td>
+</tr>
+</table>
+{{else}}
+<table class="content-list">
+	<tr>
+		<td><strong>Phone Number </strong></td> 
+		<td>{{ content.phoneNumber}}</td>
+	</tr>
+	<tr>
+		<td><strong>Email</strong></td>  
+		<td>{{ content.email}}</td>
+	</tr>
+	<tr>
+		<td><strong>City</strong></td>
+		<td>{{ content.companyCity}}</td>
+	</tr>
+	<tr>
+		<td><strong>No of Projects</strong></td>  
+		<td>{{ content.noOfProjects}}</td>
+	</tr>
+	<tr>
+		<td><strong>Total Cost Involved</strong></td>  
+		<td>{{ content.totalIncome}}</td>
+	</tr>
+
+</table>
+{{/if}}
+</div>
+<h4 class="heading">List of Projects for this client</h4>
+	<table class="table item-list">
+	{{#each content.projects as |project|}}
+		<tr>
+			<td>{{#link-to 'projects.project' project.id}}{{project.name}}{{/link-to}}</td>
+		</tr>
+		
+	{{/each}}
+	<tr>
+		<td><a href="#" {{action 'createProject'}}>Add Project</a></td>
+	</tr>
+	</table>
+
+{{#if addProject}}
+	{{input type="text" id="project-name" valueBinding=projectName placeholder="Project Name" class="form-control client-form-input"}}
+	{{input type="text" id="project-cost" valueBinding=projectCost placeholder="Total Cost" class="form-control client-form-input"}}
+	<button class="btn btn-primary client-form-input" {{ action 'submitProject' content }}>Create Project</button>
+{{/if}}
+

@@ -1,0 +1,43 @@
+.client-list{
+	list-style-type:none;
+	text-align:center;
+	
+}
+
+.client-list > li {
+}
+
+.client-form-input{
+	width:250px;
+	margin:5px;
+}
+
+.project-list{
+	width:300px;
+}
+
+.item-list tr td a:hover{
+	text-decoration:none;
+}
+
+.item-list tr td{
+	padding:10px;
+	width:150px;
+}
+
+.heading{
+	margin-left:30%;
+}
+
+.data-div{
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+.button-div{
+	margin-left:25%;
+}
+
+.content-list tr td{
+	width:150px;
+}

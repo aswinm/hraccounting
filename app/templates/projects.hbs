@@ -1,0 +1,18 @@
+
+<section id="main">  
+<div class="row">
+	<div class="col-md-3">
+		<h2 align="center">List of Projects</h2>
+		<ul class="nav nav-stacked client-list">
+			{{#each model as |project| }}
+				<li>
+					{{#link-to "projects.project" project.id}}<label>{{ project.name}}</label>{{/link-to}}
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="col-md-9">
+		{{outlet}}
+	</div>
+</div>
+</section>

@@ -1,0 +1,16 @@
+<button {{action 'editTodo'}} class="btn btn-success">Edit Client</button>&nbsp;&nbsp;
+<button {{action 'deleteTodo' content}} class="btn btn-danger">Delete Client</button><br>
+
+{{#if edit}}
+<input type="text" id="client-company-name" placeholder="Company Name" valueBinding=companyName class="form-control client-form-input">
+{{ input type="text" id="client-phone-number" placeholder="Phone Number" valueBinding=phoneNumber class="form-control client-form-input"}}
+{{ input type="email" id="client-email" placeholder="Email" valueBinding=emailId class="form-control client-form-input"}}
+{{ input type="text" id="client-city" placeholder="City" valueBinding=companyCity class="form-control client-form-input"}}
+<button {{action "createClient"}} class="btn btn-primary client-form-input">Create</button>
+{{else}}
+{{ edit}}
+Name: {{content.companyName}}<br>
+Phone Number: {{ content.phoneNumber}}<br>
+Email: {{ content.email}}<br>
+Company City: {{ content.companyCity}}
+{{/if}}
